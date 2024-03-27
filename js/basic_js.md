@@ -39,6 +39,11 @@ const inputData=confirm('가입하시겠습니까?')
 ```
 확인 누르면 true 취소 누르면 false 리턴.
 
+타입이 무엇인지?
+`typeof`
+
+배열은 무조건
+`Array.isArray()`
 
 ## 기본문법
 
@@ -136,3 +141,91 @@ let x=1
 res = (x>=0) ? '0이상의 숫자' : '0미만의 숫자'
 alert(res)
 ```
+
+
+
+        function sumAll(s,e){
+        let output=0
+        for(let i=s; i<=e; i++){
+            output += i
+        }
+        return output
+        }
+
+        console.log(`1~200까지 합:${sumAll(1,100)}`)
+
+```
+function var_arg(...items){//매개변수 개수가 일정치 않을때
+        console.log(items)
+        }
+
+        var_arg(10,20)
+        var_arg(10,20,30,40,50)
+```
+
+
+```
+function earnings(name, wage=9860, hours=40, year=new Date().getFullYear()){
+console.log(name)
+console.log(wage)
+console.log(hours)
+console.log(year)
+}
+
+earnings('홍길동') //기본시급:9860, 기본근무시간:40
+earnings('임꺽정', 10000) //기본근무시간:40
+earnings('이순신', 10000, 60)
+```
+
+콜백함수:매개변수로 전달되는 함수
+```
+function f(cb){
+    cb()
+}
+function myPrint(){
+    console.log('콜백함수가 호출되었습니다.')
+}
+f(myPrint)
+```
+
+`forEach`: 배열이 가지고 있는 함수, 배열 내부 요소를 이용해서 콜백함수 호출
+```    
+const num=[10,20,30]
+num.forEach(function(value, index, array)){
+    console.log(`${index}번째 요소: ${value}`)
+})
+```
+
+//map 함수:배열이 가지고 있는 함수, 콜백 함수의 리턴 결과로 새로운 배열 생성
+    const num2=[10,20,30]
+    res=num2.map(function(value,index,array){
+        return 2*value
+    })
+    console.log(res)
+
+
+    //filter 함수:배열이 가지고 있는 함수, 콜백 함수의 리턴값이 true에 해당되는 값들로 새로운 배열 생성
+    const num3=[10,20,30,40,50]
+    res=num3.filter(function(value, index, array){
+        return value%20==0
+    })
+    console.log(res)
+
+
+
+//화살표 함수: => 화살표로 만든 함수
+    const num4=[1,2,3,4,5,6]
+    console.log(num4.filter((value)=>value%2==0))
+    console.log(num4.map((value)=>value*2))
+
+
+//clearTimeout(타이머id) : setTimeout함수로 설정한 타이머 제거
+//clearInterval(타이머id) : setInterval함수로 설정한 타이머 제거
+
+setTimeout(() => {
+        console.log('5초후에 타이머 종료')
+        clearInterval(intervalId)
+    }, 5*1000)
+
+
+
