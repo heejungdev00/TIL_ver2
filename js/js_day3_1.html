@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script  src="test.js"></script>
+    <script>
+        console.log(d)
+
+        const obj={
+        name:'자바스크립트',
+        r_lang:'R언어'
+        }
+
+        obj.addr=obj.addr != undefined ? obj.addr : '서울시'
+        //변수 = 조건식 ? 참 : 거짓
+        console.log(obj)
+
+        //obj에 'python'속성이 있으면 속성값을 그대로 사용하고,
+        //없다면 'python'속성에 'ㅠㅏ이선 값을 추가하시오.
+        obj.python=obj.python != undefined ? obj.python : '파이썬'
+        console.log(obj)
+
+        if(obj.name){
+        console.log('name 속성있음')
+        }else{
+        console.log('name 속성없음')
+        }
+
+        /*
+        if(obj.name != undefined){
+        console.log('name 속성있음')
+        }else{
+        console.log('없음')
+        }
+        if(obj.addr != undefined){
+        console.log('addr 속성있음')
+        }else{
+        console.log('없음')
+        }*/
+
+
+        let [x,y]=[1,2]
+        console.log(x,y)
+
+
+    </script>
+
+
+
+</head>
+<body>
+
+</body>
+</html>
