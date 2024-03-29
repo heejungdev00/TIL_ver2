@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_day4과제</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=> {
+        let counter = 0
+        let isConnect = false //연결상태 : 해제
+        const h1 = document.querySelector('h1')
+        const p = document.querySelector('p')
+        const connectButton = document.querySelector('#connect')
+        const disconnectButton = document.querySelector('#disconnect')
+        const h2Plus = document.querySelector('#plus')
+        const h2Minus = document.querySelector('#minus')
+
+        //h1 태그에서 발생되는 이벤트를 리슨할 수 있도록 리스너를 추가
+        //h1.addEventListener( 이벤트명 , 이벤트발생시수행할작업 )
+        const plusListener = () => {
+            counter++
+            h1.textContent=`클릭 횟수 : ${counter}`
+
+        }
+        const minusListener = () => {
+            counter--
+            h1.textContent=`클릭 횟수 : ${counter}`
+
+        }
+        //이벤트 연결 : 연결 상태를 해제 -> 연결 => 클릭시 횟수 증가
+        connectButton.addEventListener('click',() => {
+            if(isConnect==false){
+                h2Plus.addEventListener('click', plusListener)
+                h2Minus.addEventListener('click', minusListener)
+                p.textContent='이벤트 연결 상태 : 연결'
+                isConnect=true
+            }
+        })
+        //이벤트 제거 : 연결 상태를 연결 -> 해제 => 클릭시 횟수 변동 x
+        disconnectButton.addEventListener('click',() => {
+            if(isConnect==true){
+                h2Plus.removeEventListener('click', plusListener)
+                h2Minus.removeEventListener('click', minusListener)
+                p.textContent='이벤트 연결 상태 : 해제'
+                isConnect=false
+            }
+        })
+
+
+
+        })
+
+
+    </script>
+
+</head>
+<body>
+<h1> 클릭 횟수 : 0 </h1>
+
+    <button id="connect">이벤트 연결</button>
+    <button id="disconnect">이벤트 제거</button>
+<br><br>
+    <h2 id="plus">클릭 증가</h2>
+    <h2 id="minus">클릭 감소</h2>
+
+    <p>이벤트 연결 상태: 해제</p>
+
+
+클릭 횟수 : 0
+이벤트 연결 | 이벤트 제거 | 클릭 증가 | 클릭 감소
+이벤트 연결 상태: 해제
+<br>
+1) 이벤트 연결 -> 이벤트 연결 상태: 연결 ->
+클릭 증가 -> 클릭 횟수 : 0,1,2,3...
+<br>
+2) 이벤트 연결 -> 이벤트 연결 상태: 연결 ->
+클릭 감소 -> 클릭 횟수 : 0,-1,-2,-3...
+<br>
+3) 이벤트 연결 상태: 연결 -> 클릭 증가  -> 클릭 횟수 : 0,1,2,3
+-> 클릭 감소 -> 클릭 횟수 : 2,1,0,-1,...
+<br>
+</body>
+</html>
